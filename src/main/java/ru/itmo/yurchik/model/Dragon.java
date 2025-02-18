@@ -14,7 +14,7 @@ public class Dragon {
     private DragonCave cave; //Поле не может быть null
 
     public Dragon(int id, String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) {
-        if (id >0) {
+        if (id > 0) {
             this.id = id;
         } else {
             throw new IllegalArgumentException("id не может быть null и должен быть больше 0");
@@ -24,12 +24,12 @@ public class Dragon {
         this.setCoordinates(coordinates);
         //лучше все через сеттеры
 
-        this.creationDate = creationDate;
-        this.age = age;
-        this.color = color;
-        this.type = type;
-        this.character = character;
-        this.cave = cave;
+        this.setCreationDate(creationDate);
+        this.setAge(age);
+        this.setColor(color);
+        this.setType(type);
+        this.setCharacter(character);
+        this.setCave(cave);
     }
 
     public int getId() {
@@ -65,7 +65,11 @@ public class Dragon {
     }
 
     public void setCreationDate(ZonedDateTime creationDate) {
-        this.creationDate = creationDate;
+        if (creationDate != null) {
+            this.creationDate = creationDate;
+        } else {
+            throw new IllegalArgumentException("ZoneDateTime не может быть пустым или отрицательным");
+        }
     }
 
     public Long getAge() {
@@ -73,7 +77,11 @@ public class Dragon {
     }
 
     public void setAge(Long age) {
-        this.age = age;
+        if (age != null && age > 0) {
+            this.age = age;
+        } else {
+            throw new IllegalArgumentException("Age не может быть пустым или отрицательным");
+        }
     }
 
     public Color getColor() {
@@ -81,7 +89,9 @@ public class Dragon {
     }
 
     public void setColor(Color color) {
-        this.color = color;
+        if (color != null) {
+            this.color = color;
+        } else {throw new IllegalArgumentException("Color не может быть пустым");}
     }
 
     public DragonType getType() {
@@ -89,7 +99,11 @@ public class Dragon {
     }
 
     public void setType(DragonType type) {
-        this.type = type;
+        if (type != null) {
+            this.type = type;
+        } else {
+            throw new IllegalArgumentException("Type не может быть пустым");
+        }
     }
 
     public DragonCharacter getCharacter() {
@@ -97,7 +111,9 @@ public class Dragon {
     }
 
     public void setCharacter(DragonCharacter character) {
-        this.character = character;
+        if (character != null) {
+            this.character = character;
+        } else {throw new IllegalArgumentException("Character не может быть пустым");}
     }
 
     public DragonCave getCave() {
@@ -105,6 +121,10 @@ public class Dragon {
     }
 
     public void setCave(DragonCave cave) {
-        this.cave = cave;
+        if (cave != null) {
+            this.cave = cave;
+        } else {
+            throw new IllegalArgumentException("Cave не может быть пустым");
+        }
     }
 }
