@@ -22,8 +22,6 @@ public class Dragon {
 
         this.setName(name);
         this.setCoordinates(coordinates);
-        //лучше все через сеттеры
-
         this.setCreationDate(creationDate);
         this.setAge(age);
         this.setColor(color);
