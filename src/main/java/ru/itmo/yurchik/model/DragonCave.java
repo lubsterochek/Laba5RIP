@@ -21,10 +21,10 @@ public class DragonCave {
     }
 
     public void setNumberOfTreasures(Float numberOfTreasures) {
-        if (numberOfTreasures != null) {
+        if (numberOfTreasures >0 ) {
             this.numberOfTreasures = numberOfTreasures;
         } else {
-            throw new IllegalArgumentException("NumberOfTreasures не может быть пустым или отрицательным");
+            throw new IllegalArgumentException("NumberOfTreasures не может быть отрицательным");
         }
     }
 }

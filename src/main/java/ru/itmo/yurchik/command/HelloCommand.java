@@ -19,6 +19,6 @@ public class HelloCommand extends Command {
 
     @Override
     public String getHelp() {
-        return "This is a command line help.";
+        return "This is a command hello.";
     }
 }
