@@ -1,5 +1,7 @@
 package ru.itmo.yurchik;
 
+import ru.itmo.yurchik.command.ExitCommand;
+import ru.itmo.yurchik.command.HelpCommand;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.HelloCommand;
 import ru.itmo.yurchik.command.TestCommand;
@@ -15,6 +17,7 @@ public class Main {
         //new Dragon(1234124, "xyesos", new Coordinates(), 1, 10L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave());
 
         Scanner in = new Scanner(System.in);
+        System.out.print("Введите команду: ");
 
         HashMap<String, Command> map = new HashMap<>();
 
@@ -24,6 +27,10 @@ public class Main {
         HelloCommand helloCommand = new HelloCommand();
         map.put(helloCommand.getName(), helloCommand);
         //"hello" -> helloCommand
+        ExitCommand exitCommand = new ExitCommand();
+        map.put(exitCommand.getName(), exitCommand);
+        HelpCommand helpCommand = new HelpCommand();
+        map.put(helpCommand.getName(), helpCommand);
 
         Environment environment = new Environment(map);
 
@@ -37,7 +44,7 @@ public class Main {
                 Command command = map.get(line);
                 command.execute(environment, inputStream, printStream);
             } else {
-                System.err.println("Unknown command: " + line);
+                System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
             }
         }
     }

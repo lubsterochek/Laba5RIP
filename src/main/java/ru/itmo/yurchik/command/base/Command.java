@@ -3,6 +3,7 @@ package ru.itmo.yurchik.command.base;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public abstract class Command {
     private final String name;
