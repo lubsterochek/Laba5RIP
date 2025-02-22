@@ -16,7 +16,7 @@ public class ExitCommand extends Command {
 
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) {
-        System.out.print("Хорошего дня! ♡ (*^ω^)");
+        stdout.print("Хорошего дня! ♡ (*^ω^)");
         Scanner sc = new Scanner(System.in);
         sc.close();
     }

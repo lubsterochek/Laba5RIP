@@ -16,7 +16,7 @@ public class HelpCommand extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) {
         HashMap<String, Command> stringCommandHashMap = env.getStringCommandHashMap();
         stringCommandHashMap.forEach((key, value) -> {
-            System.out.println(key + ": " + value.getHelp());
+            stdout.println(key + ": " + value.getHelp());
         });
     }
 

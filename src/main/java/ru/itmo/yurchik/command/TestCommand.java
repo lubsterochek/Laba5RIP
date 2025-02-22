@@ -13,7 +13,7 @@ public class TestCommand extends Command {
 
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout){
-        System.out.println("Test command");
+        stdout.println("Test command");
     }
 
     @Override

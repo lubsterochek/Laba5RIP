@@ -42,7 +42,7 @@ public class Main {
             String line = in.nextLine();
             if (map.keySet().contains(line)) {
                 Command command = map.get(line);
-                command.execute(environment, inputStream, printStream);
+                command.execute(environment, System.in, System.out);
             } else {
                 System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
             }

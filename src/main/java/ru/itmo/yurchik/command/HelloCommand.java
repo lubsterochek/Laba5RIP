@@ -14,7 +14,7 @@ public class HelloCommand extends Command {
 
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) {
-        System.out.println("Hello World!");
+        stdout.println("Hello World!");
     }
 
     @Override
