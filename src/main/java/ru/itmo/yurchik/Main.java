@@ -5,8 +5,10 @@ import ru.itmo.yurchik.command.*;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
+import ru.itmo.yurchik.csvReaderWriter.CsvWriter;
 import ru.itmo.yurchik.model.*;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.time.ZonedDateTime;
@@ -58,6 +60,13 @@ public class Main {
                 }
             } else {
                 System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
+            }
+            try {
+                // ✅ Сохраняем в CSV
+                CsvWriter.saveToCSV(dc);
+                System.out.println("Дракон успешно записан в файл!");
+            } catch (IOException e) {
+                System.err.println("Ошибка при сохранении в CSV: " + e.getMessage());
             }
         }
     }
