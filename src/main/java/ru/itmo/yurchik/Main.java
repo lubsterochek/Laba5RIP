@@ -5,15 +5,22 @@ import ru.itmo.yurchik.command.*;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
+import ru.itmo.yurchik.model.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //new Dragon(1234124, "xyesos", new Coordinates(), 1, 10L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave());
+        Dragon drug1 = new Dragon(1, "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave(10, 10F));
+        Dragon drug2 = new Dragon(2, "Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
+
+        DragonCollection dc = new DragonCollection();
+        dc.addDragon(drug1);
+        dc.addDragon(drug2);
 
         //для контроля потоков
         InputStream stdin = System.in;
@@ -21,8 +28,6 @@ public class Main {
 
         Scanner in = new Scanner(stdin);
         stdout.print("Введите команду: ");
-
-        DragonCollection dc = new DragonCollection();
 
         HashMap<String, Command> map = new HashMap<>();
 
