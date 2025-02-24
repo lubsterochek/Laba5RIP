@@ -127,4 +127,18 @@ public class Dragon {
             throw new IllegalArgumentException("Cave не может быть пустым");
         }
     }
+    @Override
+    public String toString() {
+        return "Dragon{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", coordinates=(" + coordinates.getX() + ", " + coordinates.getY() + ")" +
+                ", creationDate=" + creationDate +
+                ", age=" + age +
+                ", color=" + color +
+                ", type=" + type +
+                ", character=" + character +
+                ", cave(depth=" + cave.getDepth() + ", treasures=" + cave.getNumberOfTreasures() + ")" +
+                '}';
+    }
 }

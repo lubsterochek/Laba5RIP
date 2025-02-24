@@ -45,6 +45,8 @@ public class Main {
         map.put(helpCommand.getName(), helpCommand);
         RemoveFirst removeFirst = new RemoveFirst(dc);
         map.put(removeFirst.getName(), removeFirst);
+        ShowCommand showCommand = new ShowCommand(dc);
+        map.put(showCommand.getName(), showCommand);
 
         Environment environment = new Environment(map);
 
@@ -61,13 +63,15 @@ public class Main {
             } else {
                 System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
             }
-            try {
+           /*
+           try {
                 // ✅ Сохраняем в CSV
                 CsvWriter.saveToCSV(dc);
                 System.out.println("Дракон успешно записан в файл!");
             } catch (IOException e) {
                 System.err.println("Ошибка при сохранении в CSV: " + e.getMessage());
             }
+            */
         }
     }
 }

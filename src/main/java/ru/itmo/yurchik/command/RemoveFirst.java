@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 public class RemoveFirst extends Command {
-    private final DragonCollection dragonCollection;
+    private DragonCollection dragonCollection;
     public RemoveFirst(DragonCollection dragonCollection) {
         super("remove_first");
         this.dragonCollection = dragonCollection;
@@ -20,6 +20,7 @@ public class RemoveFirst extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
             dragonCollection.getDragons().removeFirst();
+            System.out.println("Successfully remove first dragon");
         } else {
             throw new CommandException("No dragons to remove");
         }
