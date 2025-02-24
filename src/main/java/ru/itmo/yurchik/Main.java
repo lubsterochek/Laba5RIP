@@ -47,6 +47,8 @@ public class Main {
         map.put(removeFirst.getName(), removeFirst);
         ShowCommand showCommand = new ShowCommand(dc);
         map.put(showCommand.getName(), showCommand);
+        InfoCommand infoCommand = new InfoCommand(dc);
+        map.put(infoCommand.getName(), infoCommand);
 
         Environment environment = new Environment(map);
 

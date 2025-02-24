@@ -10,7 +10,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 public class RemoveFirst extends Command {
-    private DragonCollection dragonCollection;
+    private final DragonCollection dragonCollection;
     public RemoveFirst(DragonCollection dragonCollection) {
         super("remove_first");
         this.dragonCollection = dragonCollection;
