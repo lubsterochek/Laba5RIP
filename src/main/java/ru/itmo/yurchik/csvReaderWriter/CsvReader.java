@@ -74,48 +74,4 @@ public class CsvReader {
         }
         return filteredData;
     }
-
-    /* Пример использования
-    public static void main(String[] args) {
-        CsvReader csvReader = new CsvReader("data.csv");
-        csvReader.read();
-
-        System.out.println("Заголовок:");
-        for (String col : csvReader.getHeader()) {
-            System.out.print(col + " ");
-        }
-        System.out.println();
-
-        System.out.println("Данные:");
-        for (String[] row : csvReader.getData()) {
-            for (String cell : row) {
-                System.out.print(cell + " ");
-            }
-            System.out.println();
-        }
-
-        System.out.println("Первая строка:");
-        String[] firstRow = csvReader.getRow(0);
-        for (String cell : firstRow) {
-            System.out.print(cell + " ");
-        }
-        System.out.println();
-
-        System.out.println("Столбец 'Age':");
-        ArrayList<String> ageColumn = csvReader.getColumn("Age");
-        for (String age : ageColumn) {
-            System.out.print(age + " ");
-        }
-        System.out.println();
-
-        // Фильтрация строк, где возраст больше 25
-        ArrayList<String[]> filteredData = csvReader.filterRows(row -> Integer.parseInt(row[1]) > 25);
-        System.out.println("Фильтрованные данные (Age > 25):");
-        for (String[] row : filteredData) {
-            for (String cell : row) {
-                System.out.print(cell + " ");
-            }
-            System.out.println();
-        }
-    } */
 }
