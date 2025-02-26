@@ -13,8 +13,7 @@ public class CsvReader {
     private ArrayList<String[]> data;
     private String[] header;
 
-    public CsvReader(){
-        String envName = "DRAGON_CSV";
+    public CsvReader(String envName){
         this.data = new ArrayList<>();
         try {
             String filePath = System.getenv(envName);
@@ -28,10 +27,8 @@ public class CsvReader {
 
     public void read() throws CsvValidationException, IOException {
         CSVReader reader = new CSVReader(fileReader);
-        // Считываем заголовок
-        header = reader.readNext();
-        // Считываем остальные данные
-        String[] nextLine;
+        header = reader.readNext();// Считываем заголовок
+        String[] nextLine; // Считываем остальные данные
         while ((nextLine = reader.readNext()) != null) {
             data.add(nextLine);
         }
