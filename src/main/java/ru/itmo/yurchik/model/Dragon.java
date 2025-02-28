@@ -1,10 +1,11 @@
 package ru.itmo.yurchik.model;
 
 import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Dragon {
-    private static int idCounter=1;
     private final int id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
@@ -13,15 +14,11 @@ public class Dragon {
     private Color color; //Поле может быть null
     private DragonType type; //Поле не может быть null
     private DragonCharacter character; //Поле может быть null
-    private DragonCave cave; //Поле не может быть null
+    private DragonCave cave;
+    private static final Set<Integer> usedIds = new HashSet<>();//Поле не может быть null
 
-    public Dragon(int id, String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) {
-        if (id > 0) {
-            this.id = idCounter++;
-        } else {
-            throw new IllegalArgumentException("id не может быть null и должен быть больше 0");
-        }
-
+    public Dragon( String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) {
+        this.id = IdGen.generateId();
         this.setName(name);
         this.setCoordinates(coordinates);
         this.setCreationDate(creationDate);
@@ -129,7 +126,7 @@ public class Dragon {
     }
     @Override
     public String toString() {
-        return "Dragon{" +
+        return "Dragon: " +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", coordinates=(" + coordinates.getX() + ", " + coordinates.getY() + ")" +
@@ -138,7 +135,6 @@ public class Dragon {
                 ", color=" + color +
                 ", type=" + type +
                 ", character=" + character +
-                ", cave(depth=" + cave.getDepth() + ", treasures=" + cave.getNumberOfTreasures() + ")" +
-                '}';
+                ", cave(depth=" + cave.getDepth() + ", treasures=" + cave.getNumberOfTreasures() + ")";
     }
 }

@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+import static ru.itmo.yurchik.model.IdGen.*;
+
 public class RemoveFirst extends Command {
     private final DragonCollection dragonCollection;
     public RemoveFirst(DragonCollection dragonCollection) {
@@ -20,6 +22,7 @@ public class RemoveFirst extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
             dragonCollection.getDragons().removeFirst();
+            //releaseId(dragonCollection.getDragons().getId()); СДЕЛАТЬ НОРМ
             System.out.println("Successfully remove first dragon");
         } else {
             throw new CommandException("No dragons to remove");
