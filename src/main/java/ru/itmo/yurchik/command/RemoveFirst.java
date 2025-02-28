@@ -22,7 +22,7 @@ public class RemoveFirst extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
             dragonCollection.getDragons().removeFirst();
-            //releaseId(dragonCollection.getDragons().getId()); СДЕЛАТЬ НОРМ
+            releaseId(dragonCollection.getDragons().getFirst().getId());
             System.out.println("Successfully remove first dragon");
         } else {
             throw new CommandException("No dragons to remove");
