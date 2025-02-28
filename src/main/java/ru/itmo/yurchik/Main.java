@@ -17,8 +17,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Dragon drug1 = new Dragon(1, "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave(10, 10F));
-        Dragon drug2 = new Dragon(2, "Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
+        Dragon drug1 = new Dragon( "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave(10, 10F));
+        Dragon drug2 = new Dragon("Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
 
         DragonCollection dc = new DragonCollection();
         dc.addDragon(drug1);
@@ -45,6 +45,14 @@ public class Main {
         map.put(helpCommand.getName(), helpCommand);
         RemoveFirst removeFirst = new RemoveFirst(dc);
         map.put(removeFirst.getName(), removeFirst);
+        ShowCommand showCommand = new ShowCommand(dc);
+        map.put(showCommand.getName(), showCommand);
+        InfoCommand infoCommand = new InfoCommand(dc);
+        map.put(infoCommand.getName(), infoCommand);
+        SaveCommand saveCommand = new SaveCommand(dc);
+        map.put(saveCommand.getName(), saveCommand);
+        AddCommand addCommand = new AddCommand(dc);
+        map.put(addCommand.getName(), addCommand);
 
         Environment environment = new Environment(map);
 
@@ -61,13 +69,15 @@ public class Main {
             } else {
                 System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
             }
-            try {
+           /*
+           try {
                 // ✅ Сохраняем в CSV
                 CsvWriter.saveToCSV(dc);
                 System.out.println("Дракон успешно записан в файл!");
             } catch (IOException e) {
                 System.err.println("Ошибка при сохранении в CSV: " + e.getMessage());
             }
+            */
         }
     }
 }

@@ -31,7 +31,7 @@ public class CsvWriter {
                 writer.writeNext(new String[]{
                         String.valueOf(dragon.getId()),
                         dragon.getName(),
-                        String.valueOf(dragon.getCoordinates().getX()),  // ✅ Записываем X координату
+                        String.valueOf(dragon.getCoordinates().getX()),
                         String.valueOf(dragon.getCoordinates().getY()),
                         dragon.getCreationDate().format(DateTimeFormatter.ISO_ZONED_DATE_TIME),
                         String.valueOf(dragon.getAge()),
