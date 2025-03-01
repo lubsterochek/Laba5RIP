@@ -7,11 +7,12 @@ public class IdGen {
 
     // 🔹 Генерирует уникальный ID
     public static int generateId() {
-        while (usedIds.contains(idCounter)) {
-            idCounter++; // Ищем первый свободный ID
+        int newId = 1; // Начинаем с 1
+        while (usedIds.contains(newId)) {
+            newId++; // Ищем первый свободный ID
         }
-        usedIds.add(idCounter);
-        return idCounter;
+        usedIds.add(newId); // Добавляем в используемые
+        return newId;
     }
 
     // 🔹 Регистрирует ID (если уже существует — выбрасывает ошибку!)

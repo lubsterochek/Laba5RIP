@@ -17,6 +17,10 @@ public class Dragon {
     private DragonCave cave;
     private static final Set<Integer> usedIds = new HashSet<>();//Поле не может быть null
 
+    public Dragon() {
+        this.id = IdGen.generateId();
+    }
+
     public Dragon( String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) {
         this.id = IdGen.generateId();
         this.setName(name);
