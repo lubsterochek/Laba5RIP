@@ -5,10 +5,8 @@ import ru.itmo.yurchik.command.*;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
-import ru.itmo.yurchik.csvReaderWriter.CsvWriter;
 import ru.itmo.yurchik.model.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.time.ZonedDateTime;
@@ -53,8 +51,10 @@ public class Main {
         map.put(saveCommand.getName(), saveCommand);
         AddCommand addCommand = new AddCommand(dc);
         map.put(addCommand.getName(), addCommand);
-        RemoveByCharacter removeByCharacter = new RemoveByCharacter(dc);
+        RemoveByCharacterCommand removeByCharacter = new RemoveByCharacterCommand(dc);
         map.put(removeByCharacter.getName(), removeByCharacter);
+        UpdateIdCommand updateIdCommand = new UpdateIdCommand(dc);
+        map.put(updateIdCommand.getName(), updateIdCommand);
 
         Environment environment = new Environment(map);
 

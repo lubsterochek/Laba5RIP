@@ -19,7 +19,7 @@ public class FormDragons {
                 temp.setName(scanner.nextLine()); // Используем сеттер с валидацией
                 break; // Если ввели корректное значение, выходим из цикла
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
         }
 
@@ -31,7 +31,7 @@ public class FormDragons {
                 temp.setCoordinates(new Coordinates(x, y)); // Используем сеттер
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
                 scanner.nextLine();
             }
         }
@@ -42,7 +42,7 @@ public class FormDragons {
                 temp.setAge(Long.parseLong(scanner.next())); // Используем сеттер с валидацией
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
         }
 
@@ -52,7 +52,7 @@ public class FormDragons {
                 temp.setColor(Color.valueOf(scanner.next().toUpperCase())); // Используем сеттер
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
         }
 
@@ -62,7 +62,7 @@ public class FormDragons {
                 temp.setType(DragonType.valueOf(scanner.next().toUpperCase())); // Используем сеттер
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
         }
 
@@ -72,7 +72,7 @@ public class FormDragons {
                 temp.setCharacter(DragonCharacter.valueOf(scanner.next().toUpperCase())); // Используем сеттер
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
             }
         }
 
@@ -84,7 +84,7 @@ public class FormDragons {
                 temp.setCave(new DragonCave(depth, treasures)); // Используем сеттер
                 break;
             } catch (IllegalArgumentException e) {
-                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                System.err.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
                 scanner.nextLine();
             }
         }
