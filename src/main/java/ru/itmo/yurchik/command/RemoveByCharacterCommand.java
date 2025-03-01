@@ -10,9 +10,9 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class RemoveByCharacter extends Command {;
+public class RemoveByCharacterCommand extends Command {;
     private final DragonCollection collection;
-    public RemoveByCharacter(DragonCollection collection) {
+    public RemoveByCharacterCommand(DragonCollection collection) {
         super("remove_all_by_character");
         this.collection = collection;
     }
@@ -28,7 +28,7 @@ public class RemoveByCharacter extends Command {;
                 finalCharacter = DragonCharacter.valueOf(scanner.next().toUpperCase()); // Преобразуем ввод в ENUM
                 break;
             } catch (IllegalArgumentException e) {
-                stdout.println("Ошибка: Неверный ввод. Попробуйте снова.");
+                System.err.println("Ошибка: Неверный ввод. Попробуйте снова.");
             }
         }
 
