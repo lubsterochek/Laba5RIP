@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CommandException {
         Dragon drug1 = new Dragon( "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave(10, 10F));
         Dragon drug2 = new Dragon("Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
 

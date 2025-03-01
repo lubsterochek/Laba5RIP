@@ -1,5 +1,7 @@
 package ru.itmo.yurchik.model;
 
+import ru.itmo.yurchik.command.exception.CommandException;
+
 import java.time.ZonedDateTime;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +19,7 @@ public class Dragon {
     private DragonCave cave;
     private static final Set<Integer> usedIds = new HashSet<>();//Поле не может быть null
 
-    public Dragon( String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) {
+    public Dragon( String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave) throws CommandException {
         this.id = IdGen.generateId();
         this.setName(name);
         this.setCoordinates(coordinates);
@@ -28,6 +30,7 @@ public class Dragon {
         this.setCharacter(character);
         this.setCave(cave);
     }
+    public Dragon(){};
 
     public int getId() {
         return id;
@@ -37,11 +40,11 @@ public class Dragon {
         return name;
     }
 
-    public void setName(String name) {
+    public void setName(String name) throws CommandException {
         if (name != null && !name.isEmpty()) {
             this.name = name;
         } else {
-            throw new IllegalArgumentException("name не может быть 0 и не может быть пустым");
+            throw new CommandException("name не может быть 0 и не может быть пустым");
         }
     }
 
