@@ -1,0 +1,95 @@
+package ru.itmo.yurchik.model;
+
+import java.time.ZonedDateTime;
+import java.util.Scanner;
+
+public class FormDragons {
+    private final Scanner scanner;
+
+    public FormDragons(Scanner scanner) {
+        this.scanner = scanner;
+    }
+
+    public static Dragon createDragon(Scanner scanner) throws IllegalArgumentException {
+        Dragon temp = new Dragon();
+
+        while (true) {
+            try {
+                System.out.print("Введите имя дракона: ");
+                temp.setName(scanner.nextLine()); // Используем сеттер с валидацией
+                break; // Если ввели корректное значение, выходим из цикла
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите координаты (x y): ");
+                float x = Float.parseFloat(scanner.next());
+                double y = Double.parseDouble(scanner.next());
+                temp.setCoordinates(new Coordinates(x, y)); // Используем сеттер
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                scanner.nextLine();
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите возраст дракона: ");
+                temp.setAge(Long.parseLong(scanner.next())); // Используем сеттер с валидацией
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите цвет (BLUE, YELLOW, WHITE, BROWN): ");
+                temp.setColor(Color.valueOf(scanner.next().toUpperCase())); // Используем сеттер
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите тип дракона (WATER, UNDERGROUND, AIR): ");
+                temp.setType(DragonType.valueOf(scanner.next().toUpperCase())); // Используем сеттер
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите характер (CHAOTIC, CHAOTIC_EVIL, FICKLE): ");
+                temp.setCharacter(DragonCharacter.valueOf(scanner.next().toUpperCase())); // Используем сеттер
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+            }
+        }
+
+        while (true) {
+            try {
+                System.out.print("Введите глубину пещеры и количество сокровищ: ");
+                double depth = Double.parseDouble(scanner.next());
+                float treasures = Float.parseFloat(scanner.next());
+                temp.setCave(new DragonCave(depth, treasures)); // Используем сеттер
+                break;
+            } catch (IllegalArgumentException e) {
+                System.out.println("Ошибка: " + e.getMessage() + ". Повторите ввод.");
+                scanner.nextLine();
+            }
+        }
+        temp.setCreationDate(ZonedDateTime.now());
+
+        return temp; // Возвращаем корректно созданного дракона
+    }
+}

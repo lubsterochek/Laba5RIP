@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) throws CommandException {
-        Dragon drug1 = new Dragon( "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC, new DragonCave(10, 10F));
+    public static void main(String[] args) {
+        Dragon drug1 = new Dragon( "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC_EVIL, new DragonCave(10, 10F));
         Dragon drug2 = new Dragon("Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
 
         DragonCollection dc = new DragonCollection();
@@ -53,6 +53,8 @@ public class Main {
         map.put(saveCommand.getName(), saveCommand);
         AddCommand addCommand = new AddCommand(dc);
         map.put(addCommand.getName(), addCommand);
+        RemoveByCharacter removeByCharacter = new RemoveByCharacter(dc);
+        map.put(removeByCharacter.getName(), removeByCharacter);
 
         Environment environment = new Environment(map);
 
@@ -69,15 +71,6 @@ public class Main {
             } else {
                 System.err.println("Unknown command: " + line + "\n Введите <help> для списка команд");
             }
-           /*
-           try {
-                // ✅ Сохраняем в CSV
-                CsvWriter.saveToCSV(dc);
-                System.out.println("Дракон успешно записан в файл!");
-            } catch (IOException e) {
-                System.err.println("Ошибка при сохранении в CSV: " + e.getMessage());
-            }
-            */
         }
     }
 }

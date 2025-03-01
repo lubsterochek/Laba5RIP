@@ -4,6 +4,8 @@ import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
+import ru.itmo.yurchik.model.Dragon;
+import ru.itmo.yurchik.model.IdGen;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -21,9 +23,10 @@ public class RemoveFirst extends Command {
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
-            dragonCollection.getDragons().removeFirst();
-            //releaseId(dragonCollection.getDragons().getId()); СДЕЛАТЬ НОРМ
-            System.out.println("Successfully remove first dragon");
+            Dragon firstDragon = dragonCollection.getDragons().getFirst();
+            dragonCollection.getDragons().removeFirst(); // Удаляем первого
+            IdGen.releaseId(firstDragon.getId());
+            System.out.println("Successfully remove with ID " + firstDragon.getId());
         } else {
             throw new CommandException("No dragons to remove");
         }
