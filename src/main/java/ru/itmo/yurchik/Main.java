@@ -45,22 +45,36 @@ public class Main {
         //"hello" -> helloCommand
         ExitCommand exitCommand = new ExitCommand();
         map.put(exitCommand.getName(), exitCommand);
+
         HelpCommand helpCommand = new HelpCommand();
         map.put(helpCommand.getName(), helpCommand);
+
         RemoveFirst removeFirst = new RemoveFirst(dc);
         map.put(removeFirst.getName(), removeFirst);
+
         ShowCommand showCommand = new ShowCommand(dc);
         map.put(showCommand.getName(), showCommand);
+
         InfoCommand infoCommand = new InfoCommand(dc);
         map.put(infoCommand.getName(), infoCommand);
+
         SaveCommand saveCommand = new SaveCommand(dc);
         map.put(saveCommand.getName(), saveCommand);
+
         AddCommand addCommand = new AddCommand(dc);
         map.put(addCommand.getName(), addCommand);
+
         RemoveByCharacterCommand removeByCharacter = new RemoveByCharacterCommand(dc);
         map.put(removeByCharacter.getName(), removeByCharacter);
+
         UpdateIdCommand updateIdCommand = new UpdateIdCommand(dc);
         map.put(updateIdCommand.getName(), updateIdCommand);
+
+        ClearCommand clearCommand = new ClearCommand(dc);
+        map.put(clearCommand.getName(), clearCommand);
+
+        HeadCommand headCommand = new HeadCommand(dc);
+        map.put(headCommand.getName(), headCommand);
 
         Environment environment = new Environment(map);
 
