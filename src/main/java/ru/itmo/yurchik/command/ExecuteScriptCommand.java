@@ -6,6 +6,7 @@ import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
 import ru.itmo.yurchik.csvReaderWriter.*;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -35,7 +36,10 @@ public class ExecuteScriptCommand extends Command {
         stdout.println("Введите название переменной окружения файла, который хотите использовать: ");
         Scanner scanner = new Scanner(stdin);
         String envName = scanner.nextLine();
-
+        String filePath = System.getenv(envName);
+        if (filePath == null) {
+            throw new CommandException ("Ошибка: Переменная окружения не установлена!");
+        }
         CsvReader reader = new CsvReader(envName);
         List<String> commands = reader.readCommandsFromFile();
 

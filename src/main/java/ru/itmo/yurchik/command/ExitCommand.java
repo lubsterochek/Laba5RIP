@@ -28,7 +28,7 @@ public class ExitCommand extends Command {
      */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) {
-        stdout.print("Хорошего дня! ♡ (*^ω^)");
+        stdout.print("Хорошего дня! ♡ (*^w^)");
         System.exit(0);
     }
     /**
