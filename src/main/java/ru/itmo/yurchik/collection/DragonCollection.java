@@ -8,13 +8,17 @@ import java.util.ArrayList;
 
 public class DragonCollection {
     private final ArrayDeque<Dragon> dragons = new ArrayDeque<>();
+
     private final ZonedDateTime initializationTime;
+
     public DragonCollection() {
         this.initializationTime = ZonedDateTime.now();
     }
+
     public ZonedDateTime getInitializationTime() {
         return initializationTime;
     }
+
     public void addDragon(Dragon dragon) {
         dragons.add(dragon);
     }
@@ -26,4 +30,6 @@ public class DragonCollection {
     public ArrayDeque<Dragon> getDragons() {
         return dragons;
     }
+
+
 }

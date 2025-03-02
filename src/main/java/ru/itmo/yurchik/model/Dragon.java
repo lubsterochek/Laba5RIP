@@ -33,6 +33,18 @@ public class Dragon {
         this.setCave(cave);
     }
 
+    public Dragon(int id, String name, Coordinates coordinates, ZonedDateTime creationDate, Long age, Color color, DragonType type, DragonCharacter character, DragonCave cave){
+        this.id = id;
+        this.setName(name);
+        this.setCoordinates(coordinates);
+        this.setCreationDate(creationDate);
+        this.setAge(age);
+        this.setColor(color);
+        this.setType(type);
+        this.setCharacter(character);
+        this.setCave(cave);
+    }
+
     public int getId() {
         return id;
     }
