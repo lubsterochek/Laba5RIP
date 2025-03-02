@@ -14,15 +14,29 @@ import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * Класс для удаления драконов, которые старше заданного дракона
+ */
 public class RemoveGreaterCommand extends Command {
+    /** Коллекция драконов */
     private DragonCollection dragonCollection;
 
+    /**
+     * Конструктор команды
+     * @param dragonCollection
+     */
     public RemoveGreaterCommand(DragonCollection dragonCollection) {
         super("remove_greater");
         this.dragonCollection = dragonCollection;
     }
 
-
+    /**
+     * Удалить драконов, старше заданных
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
@@ -60,7 +74,10 @@ public class RemoveGreaterCommand extends Command {
         int removedCount = initialSize - dragonCollection.getDragons().size();
         System.out.println("Удалено элементов: " + removedCount);
     }
-
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "delete all dragons from the collection, which are older than a given";

@@ -12,11 +12,24 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * Класс для выполнения команда из выбранного файла
+ */
 public class ExecuteScriptCommand extends Command {
+    /**
+     * Конструктор команды
+     */
     public ExecuteScriptCommand() {
         super("execute_script");
     }
 
+    /**
+     * Выполнить команду (использовать скрипт)
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         stdout.println("Введите название переменной окружения файла, который хотите использовать: ");
@@ -53,6 +66,10 @@ public class ExecuteScriptCommand extends Command {
         }
     }
 
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "consider and execute the script from the specified file. The script contains commands in the same form in which they are introduced by the user in interactive mode";

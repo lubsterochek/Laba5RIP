@@ -13,13 +13,29 @@ import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * Класс для удаления дракона по его ID
+ */
 public class RemoveByIDCommand extends Command {
+    /** Коллекция драконов */
     private DragonCollection dragonCollection;
+
+    /**
+     * Конструктор команды
+     * @param dragonCollection
+     */
     public RemoveByIDCommand(DragonCollection dragonCollection) {
         super("remove_by_id");
         this.dragonCollection = dragonCollection;
     }
 
+    /**
+     * Удалить дракона по ID
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
@@ -53,7 +69,10 @@ public class RemoveByIDCommand extends Command {
             System.out.println("Дракон с таким ID не найден. Попробуйте другую команду ");
         }
     }
-
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "delete the element from the collection according to its ID";
