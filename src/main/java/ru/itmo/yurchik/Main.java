@@ -13,6 +13,9 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * Основной класс, содержит интерпретатор + выгрузку в хэшмап команд
+ */
 public class Main {
     public static void main(String[] args) throws IOException {
         DragonCollection dc = new DragonCollection();
@@ -29,12 +32,9 @@ public class Main {
 
         HashMap<String, Command> map = new HashMap<>();
 
-        TestCommand testCommand = new TestCommand();
-        map.put(testCommand.getName(), testCommand);
-        //"test" -> testCommand
         HelloCommand helloCommand = new HelloCommand();
         map.put(helloCommand.getName(), helloCommand);
-        //"hello" -> helloCommand
+
         ExitCommand exitCommand = new ExitCommand();
         map.put(exitCommand.getName(), exitCommand);
 

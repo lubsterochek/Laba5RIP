@@ -1,9 +1,19 @@
 package ru.itmo.yurchik.model;
 
+/**
+ * Класс координат
+ */
 public class Coordinates {
+    /** Поле х */
     private float x;
+    /** Поле у */
     private double y; //Максимальное значение поля: 273
 
+    /**
+     * Конструктор
+     * @param x
+     * @param y
+     */
     public Coordinates(float x, double y) {
         this.x = x;
         if (y <= 273) {
@@ -14,10 +24,18 @@ public class Coordinates {
 
     }
 
+    /**
+     * Получить Х
+     * @return
+     */
     public float getX() {
         return x;
     }
 
+    /**
+     * Получить У
+     * @return
+     */
     public double getY() {
         return y;
     }

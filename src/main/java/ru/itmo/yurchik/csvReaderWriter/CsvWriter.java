@@ -12,9 +12,16 @@ import java.io.OutputStreamWriter;
 import java.nio.charset.CoderMalfunctionError;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Класс для записи в CSV
+ */
 public class CsvWriter {
+    /**
+     * Проверка переменной окружения + запись полей в файл
+     * @param collection
+     * @throws IOException
+     */
     public static void saveToCSV(DragonCollection collection) throws IOException {
-        // Получаем путь к файлу из переменной окружения
         String filePath = System.getenv("DRAGON_CSV");
         if (filePath == null) {
             throw new IOException("Ошибка: Переменная окружения DRAGON_CSV не установлена!");
@@ -23,10 +30,8 @@ public class CsvWriter {
         try (FileOutputStream fos = new FileOutputStream(filePath);
              CSVWriter writer = new CSVWriter(new OutputStreamWriter(fos))) {
 
-            // Записываем заголовки
             writer.writeNext(new String[]{"ID", "Name", "Coordinates X", "Y", "ZoneDate", "Age", "Color", "Type", "Character", "Depth", "NumberOfTreasures"});
 
-            // Записываем всех драконов
             for (Dragon dragon : collection.getDragons()) {
                 writer.writeNext(new String[]{
                         String.valueOf(dragon.getId()),

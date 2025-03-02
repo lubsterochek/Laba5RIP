@@ -10,17 +10,32 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+/**
+ * Класс, сохраняющий в csv
+ */
 public class SaveCommand extends Command {
+    /** Поле коллекции */
     private final DragonCollection dc;
+
+    /**
+     * Конструктор
+     * @param dragonCollection
+     */
     public SaveCommand(DragonCollection dragonCollection) {
         super("save");
         this.dc = dragonCollection;
     }
 
+    /**
+     * Сохраняет в файл, используя метод из CSVWriter
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         try {
-            // ✅ Сохраняем в CSV
             CsvWriter.saveToCSV(dc);
             System.out.println("Дракон успешно записан в файл!");
         } catch (IOException e) {
@@ -28,6 +43,10 @@ public class SaveCommand extends Command {
         }
     }
 
+    /**
+     * Краткое описание
+     * @return
+     */
     @Override
     public String getHelp() {
         return "save in file";

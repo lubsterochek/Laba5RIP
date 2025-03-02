@@ -3,13 +3,27 @@ package ru.itmo.yurchik.model;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
+/**
+ * Класс с формой создания драконов
+ */
 public class FormDragons {
+    /** Поле сканера */
     private final Scanner scanner;
 
+    /**
+     * Конструктор
+     * @param scanner
+     */
     public FormDragons(Scanner scanner) {
         this.scanner = scanner;
     }
 
+    /**
+     * Сама форма, каждое значение проверяет через сеттер и потом присваивает значение, не прерываясь
+     * @param scanner
+     * @return
+     * @throws IllegalArgumentException
+     */
     public static Dragon createDragon(Scanner scanner) throws IllegalArgumentException {
         Dragon temp = new Dragon();
 
