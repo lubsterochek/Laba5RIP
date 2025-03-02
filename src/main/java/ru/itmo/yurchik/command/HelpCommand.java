@@ -7,11 +7,23 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
 
+/**
+ * Класс для вывода названий всех команд
+ */
 public class HelpCommand extends Command {
+    /**
+     * Конструктор команды
+     */
     public HelpCommand() {
         super("help");
     }
 
+    /**
+     * Представить все команды
+     * @param env
+     * @param stdin
+     * @param stdout
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) {
         HashMap<String, Command> stringCommandHashMap = env.getStringCommandHashMap();
@@ -19,7 +31,10 @@ public class HelpCommand extends Command {
             stdout.println(key + ": " + value.getHelp());
         });
     }
-
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "This is a help command";

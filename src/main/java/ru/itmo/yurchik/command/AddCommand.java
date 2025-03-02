@@ -11,12 +11,29 @@ import java.io.PrintStream;
 import java.time.ZonedDateTime;
 import java.util.Scanner;
 
+/**
+ * Класс добавления нового дракона в файл
+ */
 public class AddCommand extends Command {
+    /** Поле коллекции драконов */
     private final DragonCollection dragonCollection;
+
+    /**
+     * Конструктор команды
+     * @param dragonCollection
+     */
     public AddCommand(DragonCollection dragonCollection) {
         super("add");
         this.dragonCollection = dragonCollection;
     }
+
+    /**
+     * Выполнить команду (добавить дракона)
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         Scanner scanner = new Scanner(stdin);
@@ -25,6 +42,10 @@ public class AddCommand extends Command {
         stdout.println("Дракон успешно добавлен: " + newDragon);
     }
 
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "add new Dragon";

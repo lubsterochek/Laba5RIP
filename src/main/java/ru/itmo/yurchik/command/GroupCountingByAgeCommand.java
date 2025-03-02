@@ -11,12 +11,29 @@ import java.io.PrintStream;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+/**
+ * Класс для группировки драконов по их возрасту
+ */
 public class GroupCountingByAgeCommand extends Command {
+    /** Коллекция драконов */
     private DragonCollection dragonCollection;
+
+    /**
+     * Конструктор
+     * @param dragonCollection
+     */
     public GroupCountingByAgeCommand(DragonCollection dragonCollection) {
         super("group_counting_by_age");
         this.dragonCollection = dragonCollection;
     }
+
+    /**
+     * Сгруппировать драконов по их возрасту
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
@@ -30,7 +47,10 @@ public class GroupCountingByAgeCommand extends Command {
         stdout.println("Группировка по возрасту: ");
         ageGroups.forEach((age, count) -> stdout.println("Возраст " + age + ": " + count + " драконов"));
     }
-
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "group elements of the collection by the age, derive the number of elements in each group";

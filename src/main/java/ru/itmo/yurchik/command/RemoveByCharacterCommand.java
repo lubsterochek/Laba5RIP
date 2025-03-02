@@ -10,15 +10,35 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
+/**
+ * Класс для удаления из коллекции всех драконов, чей характер эквивалентен заданному
+ */
 public class RemoveByCharacterCommand extends Command {;
+    /** Коллекция драконов */
     private final DragonCollection collection;
+
+    /**
+     * Конструктор команды
+     * @param collection
+     */
     public RemoveByCharacterCommand(DragonCollection collection) {
         super("remove_all_by_character");
         this.collection = collection;
     }
 
+    /**
+     * Удалить всех драконов с заданным характером
+     * @param env
+     * @param stdin
+     * @param stdout
+     * @throws CommandException
+     */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+        if (collection.getDragons().isEmpty()) {
+            throw new CommandException("Коллекция пуста! Попробуйте другую команду");
+        }
+
         Scanner scanner = new Scanner(stdin);
 
         DragonCharacter finalCharacter;
@@ -41,7 +61,10 @@ public class RemoveByCharacterCommand extends Command {;
             throw new CommandException("Драконов с характером " + finalCharacter + " не найдено.");
         }
     }
-
+    /**
+     * Метод для получения описания команды
+     * @return
+     */
     @Override
     public String getHelp() {
         return "remove all by character";
