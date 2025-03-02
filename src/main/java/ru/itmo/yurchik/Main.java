@@ -76,6 +76,9 @@ public class Main {
         HeadCommand headCommand = new HeadCommand(dc);
         map.put(headCommand.getName(), headCommand);
 
+        RemoveGreaterCommand removeGreaterCommand = new RemoveGreaterCommand(dc);
+        map.put(removeGreaterCommand.getName(), removeGreaterCommand);
+
         Environment environment = new Environment(map);
 
         while (in.hasNext()) {
