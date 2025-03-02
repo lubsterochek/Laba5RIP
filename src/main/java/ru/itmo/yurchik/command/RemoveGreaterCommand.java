@@ -15,7 +15,6 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class RemoveGreaterCommand extends Command {
-    private Dragon dragon;
     private DragonCollection dragonCollection;
 
     public RemoveGreaterCommand(DragonCollection dragonCollection) {
@@ -26,8 +25,7 @@ public class RemoveGreaterCommand extends Command {
 
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
-        ArrayDeque<Dragon> clone = dragonCollection.getDragons();
-        if (clone.isEmpty()) {
+        if (dragonCollection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }
 
