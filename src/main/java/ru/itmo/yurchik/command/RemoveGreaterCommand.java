@@ -28,22 +28,13 @@ public class RemoveGreaterCommand extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         ArrayDeque<Dragon> clone = dragonCollection.getDragons();
         if (clone.isEmpty()) {
-            throw new CommandException("Коллекция пуста!");
+            throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }
 
-        //Dragon referenceDragon = new Dragon();
         Dragon referenceDragon = null;
-        System.out.println("Введите имя дракона, с чьим возрастом хотите сравнить других: ");
+        stdout.println("Введите имя дракона, с чьим возрастом хотите сравнить других: ");
         Scanner scanner = new Scanner(stdin);
-        String name = scanner.nextLine();
-
-        /*while(!referenceDragon.getName().equals(name)) {
-            if (name == clone.peek().getName()){
-                referenceDragon = clone.remove();
-            } else {
-                clone.remove();
-            }
-        } */
+        String name = scanner.next();
 
         // Ищем дракона по имени
         for (Dragon d : dragonCollection.getDragons()) {
@@ -54,7 +45,7 @@ public class RemoveGreaterCommand extends Command {
         }
 
         if (referenceDragon == null) {
-            throw new CommandException("Дракон с таким именем не найден!");
+            throw new CommandException("Дракон с таким именем не найден! Попробуйте другую команду");
         }
 
         int initialSize = dragonCollection.getDragons().size();
@@ -65,19 +56,11 @@ public class RemoveGreaterCommand extends Command {
             Dragon dragon = iterator.next();
             if (dragon.getAge() > referenceDragon.getAge()) {
                 iterator.remove();
-                dragonCollection.getDragons().remove(dragon);
             }
         }
 
         int removedCount = initialSize - dragonCollection.getDragons().size();
         System.out.println("Удалено элементов: " + removedCount);
-
-        // Не факт что это норм
-        /*try {
-            CsvWriter.saveToCSV(dragonCollection);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } */
     }
 
     @Override
