@@ -18,7 +18,7 @@ public class Main {
         DragonCollection dc = new DragonCollection();
 
         CsvReader reader = new CsvReader("DRAGON_CSV");
-        reader.read(dc);
+        reader.readCollection(dc);
 
         //для контроля потоков
         InputStream stdin = System.in;
@@ -76,6 +76,9 @@ public class Main {
 
         GroupCountingByAgeCommand groupCountingByAgeCommand = new GroupCountingByAgeCommand(dc);
         map.put(groupCountingByAgeCommand.getName(), groupCountingByAgeCommand);
+
+        ExecuteScriptCommand executeScriptCommand = new ExecuteScriptCommand(dc);
+        map.put(executeScriptCommand.getName(), executeScriptCommand);
 
         Environment environment = new Environment(map);
 

@@ -6,6 +6,8 @@ import ru.itmo.yurchik.model.*;
 import java.io.*;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CsvReader {
     private InputStreamReader isr;
@@ -21,6 +23,20 @@ public class CsvReader {
             System.out.println("Извините, формат кодировки вашего файла не поддерживается. Попробуйте файл с кодировкой UTF-8.");
             System.exit(0);
         }
+    }
+
+    public List<String> readCommandsFromFile() {
+        List<String> commands = new ArrayList<>();
+        try {
+            BufferedReader reader = new BufferedReader(isr);
+            String line;
+            while ((line = reader.readLine()) != null) {
+                commands.add(line.trim());
+            }
+        } catch (IOException e) {
+            System.err.println("Ошибка при чтении файла: " + e.getMessage());
+        }
+        return commands;
     }
 
     //Парсим дракона из файла
@@ -47,7 +63,7 @@ public class CsvReader {
         }
     }
 
-    public void read(DragonCollection dragonCollection) throws IOException {
+    public void readCollection(DragonCollection dragonCollection) throws IOException {
         try {
             BufferedReader reader = new BufferedReader(isr);
             String line = reader.readLine();
