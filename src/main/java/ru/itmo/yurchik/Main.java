@@ -77,7 +77,7 @@ public class Main {
         GroupCountingByAgeCommand groupCountingByAgeCommand = new GroupCountingByAgeCommand(dc);
         map.put(groupCountingByAgeCommand.getName(), groupCountingByAgeCommand);
 
-        ExecuteScriptCommand executeScriptCommand = new ExecuteScriptCommand(dc);
+        ExecuteScriptCommand executeScriptCommand = new ExecuteScriptCommand();
         map.put(executeScriptCommand.getName(), executeScriptCommand);
 
         Environment environment = new Environment(map);
