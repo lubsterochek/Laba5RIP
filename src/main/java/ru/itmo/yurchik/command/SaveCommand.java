@@ -44,7 +44,7 @@ public class SaveCommand extends Command {
     }
 
     /**
-     * Краткое описание
+     * Краткое описание команды
      * @return
      */
     @Override

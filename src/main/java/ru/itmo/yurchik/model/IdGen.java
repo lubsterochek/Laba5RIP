@@ -16,7 +16,7 @@ public class IdGen {
         while (usedIds.contains(newId)) {
             newId++; // Ищем первый свободный ID
         }
-        usedIds.add(newId); // Добавляем в используемые
+        usedIds.add(newId);
         return newId;
     }
 
