@@ -13,10 +13,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class ExecuteScriptCommand extends Command {
-    private DragonCollection dragonCollection;
-    public ExecuteScriptCommand(DragonCollection dragonCollection) {
+    public ExecuteScriptCommand() {
         super("execute_script");
-        this.dragonCollection = new DragonCollection();
     }
 
     @Override
@@ -39,7 +37,12 @@ public class ExecuteScriptCommand extends Command {
             line = line.trim();
             if (mapOfCommands.containsKey(line)) {
                 Command command = mapOfCommands.get(line);
+
                 try {
+                    if(command.getName() == "execute_script"){
+                        System.err.println("Execute_script не может быть исполнена в файле -_-");
+                        continue;
+                    }
                     command.execute(env, System.in, System.out);
                 } catch (CommandException e) {
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
