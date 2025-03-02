@@ -82,6 +82,9 @@ public class Main {
         RemoveByIDCommand removeByIDCommand = new RemoveByIDCommand(dc);
         map.put(removeByIDCommand.getName(), removeByIDCommand);
 
+        GroupCountingByAgeCommand groupCountingByAgeCommand = new GroupCountingByAgeCommand(dc);
+        map.put(groupCountingByAgeCommand.getName(), groupCountingByAgeCommand);
+
         Environment environment = new Environment(map);
 
         while (in.hasNext()) {
