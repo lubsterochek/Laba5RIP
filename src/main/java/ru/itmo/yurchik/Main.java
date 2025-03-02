@@ -1,32 +1,24 @@
 package ru.itmo.yurchik;
 
-import com.opencsv.CSVReader;
 import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.command.*;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
 import ru.itmo.yurchik.csvReaderWriter.CsvReader;
-import ru.itmo.yurchik.model.*;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.time.ZonedDateTime;
 import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        //Dragon drug1 = new Dragon( "Yura", new Coordinates(1, 1), ZonedDateTime.now(), 19L, Color.BLUE, DragonType.AIR, DragonCharacter.CHAOTIC_EVIL, new DragonCave(10, 10F));
-        //Dragon drug2 = new Dragon("Leva", new Coordinates(2,2 ), ZonedDateTime.now(), 18L, Color.BROWN, DragonType.UNDERGROUND, DragonCharacter.CHAOTIC, new DragonCave(1, 0F));
-
         DragonCollection dc = new DragonCollection();
-        //dc.addDragon(drug1);
-        //dc.addDragon(drug2);
 
         CsvReader reader = new CsvReader("DRAGON_CSV");
-        reader.loadDragons(dc);
+        reader.read(dc);
 
         //для контроля потоков
         InputStream stdin = System.in;
