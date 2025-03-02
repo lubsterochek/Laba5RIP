@@ -52,6 +52,6 @@ public class ExecuteScriptCommand extends Command {
 
     @Override
     public String getHelp() {
-        return "";
+        return "consider and execute the script from the specified file. The script contains commands in the same form in which they are introduced by the user in interactive mode";
     }
 }
