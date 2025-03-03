@@ -25,10 +25,12 @@ public class CsvReader {
         }
     }
 
-    public List<String> readCommandsFromFile() {
+    public CsvReader(){}
+
+    public List<String> readCommandsFromFile(String fileName) {
         List<String> commands = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(isr);
+            BufferedReader reader = new BufferedReader(new FileReader(fileName));
             String line;
             while ((line = reader.readLine()) != null) {
                 commands.add(line.trim());
