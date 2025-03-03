@@ -12,9 +12,9 @@ public class IdGen {
      * @return
      */
     public static int generateId() {
-        int newId = 1; // Начинаем с 1
+        int newId = 1;
         while (usedIds.contains(newId)) {
-            newId++; // Ищем первый свободный ID
+            newId++;
         }
         usedIds.add(newId);
         return newId;

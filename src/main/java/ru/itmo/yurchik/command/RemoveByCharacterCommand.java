@@ -45,7 +45,7 @@ public class RemoveByCharacterCommand extends Command {;
         while (true) {
             try {
                 stdout.print("Введите характер дракона (CHAOTIC, CHAOTIC_EVIL, FICKLE): ");
-                finalCharacter = DragonCharacter.valueOf(scanner.next().toUpperCase()); // Преобразуем ввод в ENUM
+                finalCharacter = DragonCharacter.valueOf(scanner.next().toUpperCase());
                 break;
             } catch (IllegalArgumentException e) {
                 System.err.println("Ошибка: Неверный ввод. Попробуйте снова.");
