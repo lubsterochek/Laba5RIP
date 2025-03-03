@@ -48,7 +48,6 @@ public class RemoveGreaterCommand extends Command {
         Scanner scanner = new Scanner(stdin);
         String name = scanner.next();
 
-        // Ищем дракона по имени
         for (Dragon d : dragonCollection.getDragons()) {
             if (d.getName().equals(name)) {
                 referenceDragon = d;
@@ -62,7 +61,6 @@ public class RemoveGreaterCommand extends Command {
 
         int initialSize = dragonCollection.getDragons().size();
 
-        // Используем итератор, чтобы безопасно удалять элементы
         Iterator<Dragon> iterator = dragonCollection.getDragons().iterator();
         while (iterator.hasNext()) {
             Dragon dragon = iterator.next();

@@ -37,7 +37,7 @@ public class AddCommand extends Command {
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         Scanner scanner = new Scanner(stdin);
-        Dragon newDragon = FormDragons.createDragon(scanner); // Предполагается, что метод сам обрабатывает ошибки
+        Dragon newDragon = FormDragons.createDragon(scanner);
         dragonCollection.addDragon(newDragon);
         stdout.println("Дракон успешно добавлен: " + newDragon);
     }
