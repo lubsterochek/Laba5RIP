@@ -7,11 +7,8 @@ import ru.itmo.yurchik.command.exception.CommandException;
 import ru.itmo.yurchik.model.Dragon;
 import ru.itmo.yurchik.model.IdGen;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-
-import static ru.itmo.yurchik.model.IdGen.*;
 
 /**
  * Класс для удаления первого дракона из коллекции
@@ -31,13 +28,15 @@ public class RemoveFirst extends Command {
 
     /**
      * Удалить первого дракона
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
             Dragon firstDragon = dragonCollection.getDragons().getFirst();
             dragonCollection.getDragons().removeFirst();

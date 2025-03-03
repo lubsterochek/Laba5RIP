@@ -20,12 +20,14 @@ public class HelpCommand extends Command {
 
     /**
      * Представить все команды
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) {
         HashMap<String, Command> stringCommandHashMap = env.getStringCommandHashMap();
         stringCommandHashMap.forEach((key, value) -> {
             stdout.println(key + ": " + value.getHelp());

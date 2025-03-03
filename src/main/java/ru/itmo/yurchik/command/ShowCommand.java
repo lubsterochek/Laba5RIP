@@ -26,13 +26,15 @@ public class ShowCommand extends Command {
 
     /**
      * Метод для показа содержания коллекции
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }

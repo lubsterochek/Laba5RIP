@@ -1,12 +1,10 @@
 package ru.itmo.yurchik.command;
 
-import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
 import ru.itmo.yurchik.csvReaderWriter.*;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.HashMap;
@@ -26,13 +24,15 @@ public class ExecuteScriptCommand extends Command {
 
     /**
      * Выполнить команду (использовать скрипт)
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         stdout.println("Введите название переменной окружения файла, который хотите использовать: ");
         Scanner scanner = new Scanner(stdin);
         String envName = scanner.nextLine();
@@ -60,7 +60,7 @@ public class ExecuteScriptCommand extends Command {
                         System.err.println("Execute_script не может быть исполнена в файле -_-");
                         continue;
                     }
-                    command.execute(env, System.in, System.out);
+                    command.execute(env, System.in, System.out, comArgs);
                 } catch (CommandException e) {
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
                 }

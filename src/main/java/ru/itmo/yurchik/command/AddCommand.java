@@ -8,7 +8,6 @@ import ru.itmo.yurchik.model.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.time.ZonedDateTime;
 import java.util.Scanner;
 
 /**
@@ -29,13 +28,15 @@ public class AddCommand extends Command {
 
     /**
      * Выполнить команду (добавить дракона)
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         Scanner scanner = new Scanner(stdin);
         Dragon newDragon = FormDragons.createDragon(scanner);
         dragonCollection.addDragon(newDragon);

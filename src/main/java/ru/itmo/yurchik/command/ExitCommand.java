@@ -2,12 +2,9 @@ package ru.itmo.yurchik.command;
 
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
-import ru.itmo.yurchik.Main;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.sql.SQLOutput;
-import java.util.Scanner;
 
 /**
  * Класс для прекращения работы программы
@@ -22,12 +19,14 @@ public class ExitCommand extends Command {
 
     /**
      * Завершить программу (без сохранения изменений)
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) {
         stdout.print("Хорошего дня! ♡ (*^w^)");
         System.exit(0);
     }

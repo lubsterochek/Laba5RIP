@@ -28,13 +28,15 @@ public class RemoveByCharacterCommand extends Command {;
 
     /**
      * Удалить всех драконов с заданным характером
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         if (collection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }

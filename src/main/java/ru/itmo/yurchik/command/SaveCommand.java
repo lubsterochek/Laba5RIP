@@ -28,13 +28,15 @@ public class SaveCommand extends Command {
 
     /**
      * Сохраняет в файл, используя метод из CSVWriter
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         try {
             CsvWriter.saveToCSV(dc);
             System.out.println("Дракон успешно записан в файл!");
