@@ -16,6 +16,7 @@ public class CsvReader {
         try {
             String filePath = System.getenv(envName);
             isr = new InputStreamReader(new FileInputStream(filePath), "UTF-8");
+
         } catch (FileNotFoundException e) {
             System.out.printf("Задайте в переменной %1$s путь до файла коллекции", envName);
             System.exit(0);

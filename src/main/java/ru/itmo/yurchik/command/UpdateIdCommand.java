@@ -48,18 +48,18 @@ public class UpdateIdCommand extends Command {
             throw new CommandException("Ошибка: ID должен быть числом.");
         }
 
-        // Проверяем, есть ли дракон с таким ID
         boolean removed = collection.getDragons().removeIf(dragon -> dragon.getId() == id);
 
         if (!removed) {
             throw new CommandException("Ошибка: Дракон с ID " + id + " не найден.");
-        } IdGen.releaseId(id);
+        }
+        IdGen.releaseId(id);
 
         stdout.println("Дракон найден. Введите новые данные: ");
-        Dragon newDragon = FormDragons.createDragon(scanner); // Создаём нового дракона
+        Dragon newDragon = FormDragons.createDragon(scanner);
 
 
-        collection.getDragons().add(newDragon); // Добавляем нового дракона в коллекцию
+        collection.getDragons().add(newDragon);
 
         stdout.println("Дракон успешно обновлен!");
     }

@@ -13,13 +13,15 @@ import java.io.PrintStream;
 import java.util.HashMap;
 import java.util.Scanner;
 
+import static ru.itmo.yurchik.command.base.FileValidator.isFileValid;
+
 /**
  * Основной класс, содержит интерпретатор + выгрузку в хэшмап команд
  */
 public class Main {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, CommandException {
         DragonCollection dc = new DragonCollection();
-
+        isFileValid("DRAGON_CSV");
         CsvReader reader = new CsvReader("DRAGON_CSV");
         reader.readCollection(dc);
 
