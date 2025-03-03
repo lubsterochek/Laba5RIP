@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.nio.charset.CoderMalfunctionError;
+import java.nio.charset.StandardCharsets;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -28,7 +29,7 @@ public class CsvWriter {
         }
 
         try (FileOutputStream fos = new FileOutputStream(filePath);
-             CSVWriter writer = new CSVWriter(new OutputStreamWriter(fos))) {
+             CSVWriter writer = new CSVWriter(new OutputStreamWriter(fos, StandardCharsets.UTF_8))) {
 
             writer.writeNext(new String[]{"ID", "Name", "Coordinates X", "Y", "ZoneDate", "Age", "Color", "Type", "Character", "Depth", "NumberOfTreasures"});
 
