@@ -20,7 +20,7 @@ public class SaveCommand extends Command {
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         try {
-            // ✅ Сохраняем в CSV
+            // Сохраняем в CSV
             CsvWriter.saveToCSV(dc);
             System.out.println("Дракон успешно записан в файл!");
         } catch (IOException e) {
