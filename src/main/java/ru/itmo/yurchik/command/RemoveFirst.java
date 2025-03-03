@@ -40,7 +40,7 @@ public class RemoveFirst extends Command {
     public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
         if (!dragonCollection.getDragons().isEmpty()) {
             Dragon firstDragon = dragonCollection.getDragons().getFirst();
-            dragonCollection.getDragons().removeFirst(); // Удаляем первого
+            dragonCollection.getDragons().removeFirst();
             IdGen.releaseId(firstDragon.getId());
             System.out.println("Первый дракон удален! Его ID:  " + firstDragon.getId());
         } else {
