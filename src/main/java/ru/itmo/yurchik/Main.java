@@ -84,7 +84,7 @@ public class Main {
 
         while (in.hasNext()) {
             String line = in.nextLine();
-            String[] aLine = line.split(" ");
+            String[] aLine = line.trim().split("\\s+"); //убираем пробелы в начале и в конце сплитуем по всем пробелам
             String[] comArgs = new String[aLine.length - 1];
             System.arraycopy(aLine, 1, comArgs, 0, comArgs.length);
 

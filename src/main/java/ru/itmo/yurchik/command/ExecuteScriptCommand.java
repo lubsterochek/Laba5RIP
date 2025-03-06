@@ -7,14 +7,17 @@ import ru.itmo.yurchik.csvReaderWriter.*;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Класс для выполнения команда из выбранного файла
  */
 public class ExecuteScriptCommand extends Command {
+    /** Файлы, которые уже были запущены командой execute_script */
+    private static ArrayList<String> usedFiles = new ArrayList<>() ;
     /**
      * Конструктор команды
      */
@@ -33,36 +36,53 @@ public class ExecuteScriptCommand extends Command {
      */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
-        String fileName = comArgs[0];
+        String fileName;
+        try {
+            fileName = comArgs[0];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("У команды execute_script отсутствует название скрипта!");
+            return;
+        }
 
+        if (usedFiles.contains(fileName)) {
+            stdout.println("Файл попытался запустить " + fileName +  ". Пропускаем эту строку");
+            return;
+        }
+
+        usedFiles.add(fileName);
+
+        //СДЕЛАТЬ В РИДЕРЕ НЕ ЧЕРЕЗ ПЕРЕМЕННУЮ ОКРЖУЕНИЯ А ЧЕРНЗ ФАЙЛНЕЙМ
+        //Осталось обработать ситуацию, когда нету файлика
         CsvReader reader = new CsvReader();
-        List<String> commands = reader.readCommandsFromFile(fileName);
+        List<String[]> comAndArgs = reader.readComAndArgsFromFile(fileName);
 
-        if (commands.isEmpty()) {
+        if (comAndArgs.isEmpty()) {
             stdout.println("Ошибка: файл не содержит команд или не может быть прочитан.");
             return;
         }
 
         HashMap<String, Command> mapOfCommands = env.getStringCommandHashMap();
 
-        for (String line : commands) {
-            line = line.trim();
-            if (mapOfCommands.containsKey(line)) {
-                Command command = mapOfCommands.get(line);
-
+        //Отсюда закончить (Вроде норм, только нижний коммент доделать)
+        for (String[] aLine : comAndArgs) {
+            String comName = aLine[0];
+            String[] args = new String[aLine.length - 1];
+            System.arraycopy(aLine, 1, args, 0, args.length);
+            if (mapOfCommands.containsKey(comName)) {
+                Command command = mapOfCommands.get(comName);
                 try {
-                    if(command.getName() == "execute_script"){
-                        System.err.println("Execute_script не может быть исполнена в файле -_-");
-                        continue;
-                    }
-                    command.execute(env, System.in, System.out, comArgs);
-                } catch (CommandException e) {
+                    command.execute(env, System.in, System.out, args);
+                }
+                catch (CommandException e) {
+                    //Оставить только e.getMessage(), но прописать у всех команд в CommandException "Ошибка команды ..."
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
                 }
             } else {
-                System.err.println("Неизвестная команда: " + line + "\nВведите <help> для списка команд.");
+                System.err.println("В файле содержится неизвестная команда: " + comName );
             }
         }
+
+        usedFiles.clear();
     }
 
     /**

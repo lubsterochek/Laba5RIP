@@ -27,18 +27,20 @@ public class CsvReader {
 
     public CsvReader(){}
 
-    public List<String> readCommandsFromFile(String fileName) {
-        List<String> commands = new ArrayList<>();
+    public List<String[]> readComAndArgsFromFile(String fileName) {
+        List<String[]> comAndArgs = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(new FileReader(fileName));
+            //Тут какая-то хуйня
+            String filePath = System.getenv(fileName);
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             String line;
             while ((line = reader.readLine()) != null) {
-                commands.add(line.trim());
+                comAndArgs.add(line.trim().split("\\s+"));
             }
         } catch (IOException e) {
             System.err.println("Ошибка при чтении файла: " + e.getMessage());
         }
-        return commands;
+        return comAndArgs;
     }
 
     //Парсим дракона из файла

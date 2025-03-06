@@ -48,7 +48,7 @@ public class UpdateIdCommand extends Command {
         } catch (NumberFormatException e) {
             throw new CommandException("Ошибка: ID должен быть числом.");
         } catch (ArrayIndexOutOfBoundsException e) {
-            throw new CommandException("GOVNO");
+            throw new CommandException("Вы не ввели айди дракона");
         }
 
 
