@@ -36,7 +36,7 @@ public class HeadCommand extends Command {
         if (dragons.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }
-        System.out.printf("Первый элемент коллекции: %1$s", dragons.getDragons().getFirst());
+        System.out.println("Первый элемент коллекции: %1$s" + dragons.getDragons().getFirst());
     }
     /**
      * Метод для получения описания команды
