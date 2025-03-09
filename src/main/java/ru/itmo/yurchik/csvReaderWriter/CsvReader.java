@@ -4,10 +4,14 @@ import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.model.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CsvReader {
     private InputStreamReader isr;
@@ -27,11 +31,23 @@ public class CsvReader {
 
     public CsvReader(){}
 
+    private static Path findFile(String fileName, Path startDir) throws IOException {
+        try (var paths = Files.walk(startDir)) {
+            return paths
+                    .filter(Files::isRegularFile)
+                    .filter(p -> p.getFileName().toString().equals(fileName))
+                    .findFirst()
+                    .orElse(null);
+        }
+    }
+
     public List<String[]> readComAndArgsFromFile(String fileName) {
         List<String[]> comAndArgs = new ArrayList<>();
         try {
-            //Тут какая-то хуйня
-            String filePath = System.getenv(fileName);
+
+            // Мейби сделать String filePath = findFile.toString();?
+            String filePath = new File(fileName).getAbsolutePath();
+
             BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             String line;
             while ((line = reader.readLine()) != null) {

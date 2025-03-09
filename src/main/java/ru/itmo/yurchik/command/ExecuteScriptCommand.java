@@ -49,17 +49,17 @@ public class ExecuteScriptCommand extends Command {
             return;
         }
 
-        usedFiles.add(fileName);
-
         //СДЕЛАТЬ В РИДЕРЕ НЕ ЧЕРЕЗ ПЕРЕМЕННУЮ ОКРЖУЕНИЯ А ЧЕРНЗ ФАЙЛНЕЙМ
         //Осталось обработать ситуацию, когда нету файлика
         CsvReader reader = new CsvReader();
         List<String[]> comAndArgs = reader.readComAndArgsFromFile(fileName);
 
         if (comAndArgs.isEmpty()) {
-            stdout.println("Ошибка: файл не содержит команд или не может быть прочитан.");
+            System.err.println("Ошибка: файл не содержит команд или не может быть прочитан.");
             return;
         }
+
+        usedFiles.add(fileName);
 
         HashMap<String, Command> mapOfCommands = env.getStringCommandHashMap();
 
