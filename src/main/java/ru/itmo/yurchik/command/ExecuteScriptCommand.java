@@ -49,7 +49,6 @@ public class ExecuteScriptCommand extends Command {
             return;
         }
 
-        //СДЕЛАТЬ В РИДЕРЕ НЕ ЧЕРЕЗ ПЕРЕМЕННУЮ ОКРЖУЕНИЯ А ЧЕРНЗ ФАЙЛНЕЙМ
         //Осталось обработать ситуацию, когда нету файлика
         CsvReader reader = new CsvReader();
         List<String[]> comAndArgs = reader.readComAndArgsFromFile(fileName);
@@ -63,7 +62,6 @@ public class ExecuteScriptCommand extends Command {
 
         HashMap<String, Command> mapOfCommands = env.getStringCommandHashMap();
 
-        //Отсюда закончить (Вроде норм, только нижний коммент доделать)
         for (String[] aLine : comAndArgs) {
             String comName = aLine[0];
             String[] args = new String[aLine.length - 1];
@@ -74,7 +72,6 @@ public class ExecuteScriptCommand extends Command {
                     command.execute(env, System.in, System.out, args);
                 }
                 catch (CommandException e) {
-                    //Оставить только e.getMessage(), но прописать у всех команд в CommandException "Ошибка команды ..."
                     System.err.println("Ошибка при выполнении команды: " + e.getMessage());
                 }
             } else {
