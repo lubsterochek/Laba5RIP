@@ -39,7 +39,7 @@ public class FormDragons {
 
         while (true) {
             try {
-                System.out.print("Введите координаты (x y): ");
+                System.out.print("Введите координаты через пробел (x y): ");
                 float x = Float.parseFloat(scanner.next());
                 double y = Double.parseDouble(scanner.next());
                 temp.setCoordinates(new Coordinates(x, y)); // Используем сеттер
@@ -92,7 +92,7 @@ public class FormDragons {
 
         while (true) {
             try {
-                System.out.print("Введите глубину пещеры и количество сокровищ: ");
+                System.out.print("Введите через пробел глубину пещеры и количество сокровищ: ");
                 double depth = Double.parseDouble(scanner.next());
                 float treasures = Float.parseFloat(scanner.next());
                 temp.setCave(new DragonCave(depth, treasures)); // Используем сеттер
