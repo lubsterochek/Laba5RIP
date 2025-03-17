@@ -39,18 +39,20 @@ public class RemoveByIDCommand extends Command {
      */
     @Override
     public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
+
+
         if (dragonCollection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }
 
-        stdout.println("Введите ID дракона, которого хотите удалить: ");
-        Scanner scanner = new Scanner(stdin);
         int id;
 
         try {
-            id = scanner.nextInt();
-        } catch (InputMismatchException e) {
-            throw new CommandException("Ошибка: ID должен быть числом. Попробуйте другую команду");
+            id = Integer.parseInt(comArgs[0]); // Читаем ID
+        } catch (NumberFormatException e) {
+            throw new CommandException("Ошибка: ID должен быть числом.");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new CommandException("Вы не ввели айди дракона");
         }
 
         Iterator<Dragon> iterator = dragonCollection.getDragons().iterator();

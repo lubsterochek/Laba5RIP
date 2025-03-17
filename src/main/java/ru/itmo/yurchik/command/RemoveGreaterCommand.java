@@ -43,9 +43,14 @@ public class RemoveGreaterCommand extends Command {
         }
 
         Dragon referenceDragon = null;
-        stdout.println("Введите имя дракона, с чьим возрастом хотите сравнить других: ");
-        Scanner scanner = new Scanner(stdin);
-        String name = scanner.next();
+
+        String name;
+
+        try {
+            name = comArgs[0];
+        } catch (ArrayIndexOutOfBoundsException e) {
+            throw new CommandException("Вы не ввели имя дракона");
+        }
 
         for (Dragon d : dragonCollection.getDragons()) {
             if (d.getName().equals(name)) {
