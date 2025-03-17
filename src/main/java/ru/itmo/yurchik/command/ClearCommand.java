@@ -26,13 +26,15 @@ public class ClearCommand extends Command {
 
     /**
      * Выполнить команду (очистить коллекцию)
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         dragons.getDragons().clear();
         stdout.println("Коллекция драконов очищена!");
     }

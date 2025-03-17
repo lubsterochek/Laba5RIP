@@ -8,7 +8,6 @@ import ru.itmo.yurchik.model.Dragon;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayDeque;
 import java.util.InputMismatchException;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -31,13 +30,15 @@ public class RemoveByIDCommand extends Command {
 
     /**
      * Удалить дракона по ID
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }

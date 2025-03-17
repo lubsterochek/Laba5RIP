@@ -4,13 +4,10 @@ import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.command.base.Command;
 import ru.itmo.yurchik.command.base.Environment;
 import ru.itmo.yurchik.command.exception.CommandException;
-import ru.itmo.yurchik.csvReaderWriter.CsvWriter;
 import ru.itmo.yurchik.model.Dragon;
 
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.ArrayDeque;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -32,13 +29,15 @@ public class RemoveGreaterCommand extends Command {
 
     /**
      * Удалить драконов, старше заданных
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      * @throws CommandException
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) throws CommandException {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) throws CommandException {
         if (dragonCollection.getDragons().isEmpty()) {
             throw new CommandException("Коллекция пуста! Попробуйте другую команду");
         }

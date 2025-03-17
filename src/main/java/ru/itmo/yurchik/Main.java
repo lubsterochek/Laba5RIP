@@ -86,10 +86,14 @@ public class Main {
 
         while (in.hasNext()) {
             String line = in.nextLine();
-            if (map.keySet().contains(line)) {
-                Command command = map.get(line);
+            String[] aLine = line.trim().split("\\s+"); //убираем пробелы в начале и в конце сплитуем по всем пробелам
+            String[] comArgs = new String[aLine.length - 1];
+            System.arraycopy(aLine, 1, comArgs, 0, comArgs.length);
+
+            if (map.keySet().contains(aLine[0])) {
+                Command command = map.get(aLine[0]);
                 try {
-                    command.execute(environment, System.in, System.out);
+                    command.execute(environment, System.in, System.out, comArgs);
                 }
                 catch (CommandException e) {
                     System.err.println(e.getMessage());

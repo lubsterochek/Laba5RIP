@@ -19,12 +19,14 @@ public class HelloCommand extends Command {
 
     /**
      * Вывести: Hello, World!
+     *
      * @param env
      * @param stdin
      * @param stdout
+     * @param comArgs
      */
     @Override
-    public void execute(Environment env, InputStream stdin, PrintStream stdout) {
+    public void execute(Environment env, InputStream stdin, PrintStream stdout, String[] comArgs) {
         stdout.println("Hello, World!");
     }
     /**

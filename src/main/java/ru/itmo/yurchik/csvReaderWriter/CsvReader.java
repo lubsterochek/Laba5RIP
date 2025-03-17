@@ -4,10 +4,14 @@ import ru.itmo.yurchik.collection.DragonCollection;
 import ru.itmo.yurchik.model.*;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class CsvReader {
     private InputStreamReader isr;
@@ -26,18 +30,23 @@ public class CsvReader {
         }
     }
 
-    public List<String> readCommandsFromFile() {
-        List<String> commands = new ArrayList<>();
+    public CsvReader(){}
+
+    public List<String[]> readComAndArgsFromFile(String fileName) {
+        List<String[]> comAndArgs = new ArrayList<>();
         try {
-            BufferedReader reader = new BufferedReader(isr);
+
+            String filePath = new File(fileName).getAbsolutePath();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), "UTF-8"));
             String line;
             while ((line = reader.readLine()) != null) {
-                commands.add(line.trim());
+                comAndArgs.add(line.trim().split("\\s+"));
             }
         } catch (IOException e) {
             System.err.println("Ошибка при чтении файла: " + e.getMessage());
         }
-        return commands;
+        return comAndArgs;
     }
 
     //Парсим дракона из файла
